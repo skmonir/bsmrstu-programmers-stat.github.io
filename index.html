@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>BSMRSTU Programming Club Statistics</title>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://unpkg.com/@uirouter/angularjs@1.0.22/release/angular-ui-router.js"></script>
+
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body ng-app="app">
+      <div class="container" ng-controller="appController"  style="font-family: consolas;">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-info">
+              <div class="panel-body">
+                <div class="page-header">
+                  <h1>BSMRSTU CodeForces Statistics</h1>
+                </div>
+                <table class="table table-default table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th class="col-sm-2 td-center">Handle</th>
+                      <th class="col-sm-4 td-center">Name</th>
+                      <th class="col-sm-3 td-center handTool" ng-click="sortUser('rating')">
+                        Current Rating <span ng-class="getSortClass('rating')" aria-hidden="true"></span>
+                      </th>
+                      <th class="col-sm-3 td-center handTool" ng-click="sortUser('maxRating')">
+                        Max. Rating <span ng-class="getSortClass('maxRating')" aria-hidden="true"></span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="user in users | orderBy:sortColumn:!ascOrder">
+                      <td class="td-center {{ colors[user.rank] }}">
+                        <div class="row" >
+                          <a href="https://codeforces.com/profile/{{user.handle}}" target="_blank"><strong>{{ user.handle }}</strong></a>
+                        </div>
+                      </td>
+                      <td class="td-center">{{ user.firstName + ' ' + user.lastName }}</td>
+                      <td class="td-center {{ colors[user.rank] }}">{{ user.rating + ', ' + user.rank }}</td>
+                      <td class="td-center {{ colors[user.maxRank] }}">{{ user.maxRating + ', ' + user.maxRank }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <ui-view></ui-view>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+
+</html>

@@ -1,0 +1,21 @@
+.td-center {
+  text-align: center;
+}
+.userBlue {
+  color: blue !important;
+}
+.userCyan {
+  color: #03A89E !important;
+}
+.userGreen {
+  color: green !important;
+}
+.userGray {
+  color: gray !important;
+}
+a {
+  color: inherit;
+}
+.handTool {
+  cursor: pointer;
+}
